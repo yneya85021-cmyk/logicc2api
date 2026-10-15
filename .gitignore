@@ -1,0 +1,38 @@
+data/
+.backup/
+.playwright-cli/
+node_modules/
+*.log
+.env*
+!.env.example
+.dev.vars*
+!.dev.vars.example
+.wrangler/
+dist/
+# Machine-specific Docker settings, including local DNS/proxy overrides.
+compose.override.yaml
+compose.override.yml
+.DS_Store
+assistant-prompts.json
+assistant-prompts.json.tmp
+
+# Local credentials and account exports (including accidental root-level copies).
+state.json
+state.json.tmp
+accounts.json
+accounts-*.json
+credentials.json
+credentials-*.json
+*token*.txt
+*cookie*.txt
+*.pem
+*.key
+*.keys
+
+# Network/browser captures may contain Authorization headers and cookies.
+*.har
+*.pcap
+*.pcapng
+http-packets.json
+storage-state*.json
+auth.json

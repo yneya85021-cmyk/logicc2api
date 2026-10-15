@@ -1,0 +1,45 @@
+{
+  "name": "logicc2api",
+  "version": "1.3.0",
+  "description": "OpenAI-compatible Logicc adapter with account pools, a web console, and Node/Docker/Cloudflare Workers deployment.",
+  "license": "MIT",
+  "author": "JamesZhaoY",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JamesZhaoY/logicc2api.git"
+  },
+  "homepage": "https://github.com/JamesZhaoY/logicc2api#readme",
+  "bugs": {
+    "url": "https://github.com/JamesZhaoY/logicc2api/issues"
+  },
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test test/*.test.mjs",
+    "dev:worker": "wrangler dev",
+    "build:worker": "wrangler deploy --dry-run --outdir dist/worker",
+    "test:worker": "node --test test/worker.integration.mjs",
+    "check:secrets": "node scripts/check-secrets.mjs",
+    "deploy": "wrangler deploy"
+  },
+  "cloudflare": {
+    "bindings": {
+      "LOGICC_ADMIN_PASSWORD": {
+        "description": "Console password for username **admin**. Generate a private value with `openssl rand -hex 32`. / 管理控制台密码，请生成随机值。"
+      },
+      "LOGICC_API_KEY": {
+        "description": "A separate private API key for `/v1/*`. Generate with `openssl rand -hex 32`. / API 访问密钥，请使用与管理密码不同的随机值。"
+      },
+      "LOGICC": {
+        "description": "Persistent account pool, usage metadata, and assistant prompt settings. / 持久化号池、请求元数据和助手提示词配置。"
+      }
+    }
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "devDependencies": {
+    "wrangler": "4.151.0"
+  }
+}

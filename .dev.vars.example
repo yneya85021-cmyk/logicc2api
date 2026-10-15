@@ -1,0 +1,5 @@
+# Set your own values during Deploy to Cloudflare, or in .dev.vars for local testing.
+# Generate two DIFFERENT values with: openssl rand -hex 32
+# Console username: admin. These are deployment secrets, not Logicc credentials.
+LOGICC_ADMIN_PASSWORD=""
+LOGICC_API_KEY=""
